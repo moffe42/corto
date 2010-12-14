@@ -24,6 +24,12 @@ svn checkout http://corto.googlecode.com/svn/trunk/ corto
 cp /var/www/corto/public/index.php /var/www/corto/public/myproxy.php
 }}}
   # Edit myproxy.php (INCOMPLETE) 
+{{{
+// Comment out
+//include ('../configs/corto.mdmgmt.php');
+// Change to match metadata location
+$server->setMetadata('/var/tmp/myproxy_optimized_metadata.php');
+}}}
    Note: var/www/corto/configs/myproxy_optimized_metadata.php must be matched
   # Configure a metadata import script
 {{{
