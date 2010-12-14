@@ -28,7 +28,7 @@ cp /var/www/corto/public/index.php /var/www/corto/public/myproxy.php
 // Comment out
 //include ('../configs/corto.mdmgmt.php');
 // Change to match metadata location
-$server->setMetadata('/var/tmp/myproxy_optimized_metadata.php');
+$server->setMetadata('/var/www/corto/configs/myproxy_optimized_metadata.php');
 }}}
    Note: var/www/corto/configs/myproxy_optimized_metadata.php must be matched
   # Configure a metadata import script
