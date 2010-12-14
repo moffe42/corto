@@ -56,7 +56,8 @@ php /var/www/corto/configs/myproxy.mdmgmt.php
 {{{
 http://example.com/corto/myproxy.php/corto
 }}}
-== Corto metadata representation ==
+  # 
+
 
 
 = NOTES =
