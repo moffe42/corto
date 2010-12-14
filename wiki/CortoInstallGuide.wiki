@@ -62,7 +62,7 @@ php /var/www/corto/configs/myproxy.mdmgmt.php
 {{{
 http://example.com/corto/myproxy.php/corto
 }}}
-  # 
+  # You should now be able to login to your service via Corto to your IdP.
 
 
 
