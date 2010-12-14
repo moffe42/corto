@@ -23,22 +23,11 @@ svn checkout http://corto.googlecode.com/svn/trunk/ corto
 {{{
 cp /var/www/corto/public/index.php /var/www/corto/public/myproxy.php
 }}}
-  #
+  # Edit myproxy.php (INCOMPLETE)
   # Configure a metadata import script
-
-
-
-
-
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
-
-
-
+{{{
+cp /var/www/corto/configs/corto.mdmgmt.php /var/www/corto/configs/myproxy.mdmgmt.php
+}}}
 
 = NOTES =
 Always use https in production
