@@ -12,26 +12,26 @@ An optimized, internal representation of the metadata is automatically stored in
 
 We assume that we are installing in `/var/www/corto`and accessable at http://example.com/corto
 
-# Check out the Corto code from the repository
+  # Check out the Corto code from the repository
 {{{
 cd /var/www
 svn checkout http://corto.googlecode.com/svn/trunk/ corto
 }}}
-#Create a virtual host that maps `http://example.com/corto` to `/var/www/corto/public`
-# Test that the setup is working by going to `http://example.com/corto`
-# Creating the 'landing page' by coping that index.php to myproxy.php
+  #Create a virtual host that maps `http://example.com/corto` to `/var/www/corto/public`
+  # Test that the setup is working by going to `http://example.com/corto`
+  # Creating the 'landing page' by coping that index.php to myproxy.php
 {{{
 cp /var/www/corto/public/index.php /var/www/corto/public/myproxy.php
 }}}
-# Edit myproxy.php (INCOMPLETE) 
-Note: var/www/corto/configs/myproxy_optimized_metadata.php must be matched
-# Configure a metadata import script
+  # Edit myproxy.php (INCOMPLETE) 
+   Note: var/www/corto/configs/myproxy_optimized_metadata.php must be matched
+  # Configure a metadata import script
 {{{
 cp /var/www/corto/configs/corto.mdmgmt.php /var/www/corto/configs/myproxy.mdmgmt.php
 }}}
-# Create metadata (We assume that we haev metadata for both an SP and an IdP in SAML 2.0 XML format)
-Edit `/var/www/corto/configs/myproxy.mdmgmt.php`
-The `$metadatasources` contains pointers to all metadata used by Corto. There are two different handlers `php` and `xml`. 
+  # Create metadata (We assume that we haev metadata for both an SP and an IdP in SAML 2.0 XML format)
+   Edit `/var/www/corto/configs/myproxy.mdmgmt.php`
+   The `$metadatasources` contains pointers to all metadata used by Corto. There are two different handlers `php` and `xml`. 
     * `php` points to a file on the disc
     * `xml` points to an xml file either on disk or on a remote location. All protocols recognized by php can be used.
 {{{
@@ -41,18 +41,18 @@ $metadatasources = array(
     'php:' . dirname(__FILE__) . '/../configs/corto.meta.php',
 );
 }}}
-All metadata sources are merged into on metadata document, ie. merging duplicate entities. Allowing public and private metadata to be merged for internal use in Corto. You can parse in metadata that contains commen metadata used for all entitites by using `_COMMON_` as the entityID.
-The metadata `corto.meta.php` is Cortos own internal metadata.
-# Configure where to put the optimized Corto metadata.
+   All metadata sources are merged into on metadata document, ie. merging duplicate entities. Allowing public and private metadata to be merged for internal use in Corto. You can parse in metadata that contains commen metadata used for all entitites by using `_COMMON_` as the entityID.
+   The metadata `corto.meta.php` is Cortos own internal metadata.
+  # Configure where to put the optimized Corto metadata.
 {{{
 $metadatafile = '/var/www/corto/configs/myproxy_optimized_metadata.php';
 }}}
-# Run the `myproxy.mdmgmt.php` script
+  # Run the `myproxy.mdmgmt.php` script
 {{{
 php /var/www/corto/configs/myproxy.mdmgmt.php
 }}}
-Now Corto has produced metadata fit for Corto consumtion.
-# Metadata for Corto can be located at
+   Now Corto has produced metadata fit for Corto consumtion.
+  # Metadata for Corto can be located at
 {{{
 http://example.com/corto/myproxy.php/corto
 }}}
