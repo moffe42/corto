@@ -1,0 +1,36 @@
+#Corto install guide
+
+= Introduction =
+
+Corto is configured entirely by SAML2 metadata - no other configuration is needed.
+
+Corto runs in demo mode right out of the box, using index.php as it's 'landing page' and the metadata file 'cortotest.meta.php as configuration. 
+
+An optimized, internal representation of the metadata is automatically stored in /var/tmp/corto_optimized_metadata
+ 
+===Configuration of Corto in a non-demo mode is done in two steps:===
+
+We assume that we are installing in `/var/www/corto`
+
+ # Check out the Corto code from the repository
+{{{
+cd /var/www
+svn checkout http://corto.googlecode.com/svn/trunk/ corto
+}}}
+
+*creating the 'landing page'
+
+*configure a metadata import script
+
+
+
+
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
+
+
