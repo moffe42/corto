@@ -28,6 +28,30 @@ cp /var/www/corto/public/index.php /var/www/corto/public/myproxy.php
 {{{
 cp /var/www/corto/configs/corto.mdmgmt.php /var/www/corto/configs/myproxy.mdmgmt.php
 }}}
+  # Create metadata (We assume that we haev metadata for both an SP and an IdP in SAML 2.0 XML format)
+  Edit `/var/www/corto/configs/myproxy.mdmgmt.php`
+  The `$metadatasources` contains pointers to all metadata used by Corto. There are two different handlers `php` and `xml`. 
+    * `php` points to a file on the disc
+    * `xml` points to an xml file either on disk or on a remote location. All protocols recognized by php can be used.
+{{{
+$metadatasources = array(
+    'xml:' . dirname(__FILE__) . '/../configs/mysp.meta.xml',
+    'xml:' . dirname(__FILE__) . '/../configs/myidp.meta.xml',
+);
+}}}
+  All metadata sources are merged into on metadata document, ie. merging duplicate entities. Allowing public and private metadata to be merged for internal use in Corto. You can parse in metadata that contains commen metadata used for all entitites by using `_COMMON_` as the entityID. 
+  # Configure where to put the optimized Corto metadata.
+{{{
+$metadatafile = '/var/www/corto/configs/myproxy_optimized_metadata.php';
+}}}
+  # Run the `myproxy.mdmgmt.php` script
+{{{
+php /var/www/corto/configs/myproxy.mdmgmt.php
+}}}
+  Now Corto has produced metadata fit for Corto consumtion.
+  # 
+== Corto metadata representation ==
+
 
 = NOTES =
 Always use https in production
