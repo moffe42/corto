@@ -12,7 +12,7 @@ An optimized, internal representation of the metadata is automatically stored in
 
 We assume that we are installing in `/var/www/corto`and accessable at http://example.com/corto
 
- # Check out the Corto code from the repository
+  # Check out the Corto code from the repository
 {{{
 cd /var/www
 svn checkout http://corto.googlecode.com/svn/trunk/ corto
