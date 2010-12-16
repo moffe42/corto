@@ -8,7 +8,7 @@ Corto is configured entirely by SAML2 metadata - no other configuration is neede
 
 Corto runs in demo mode right out of the box, using corto.php as it's 'landing page' and the metadata file `metadata/corto.optimized.metadata.php` as a pre-prepared metadafile. `index.php` works as a simple application/sp which allows you to test a preconfigured version of corto.
 
-Corto uses a simple naming convention for mapping a corto instance to the corresponding metadata: if you use `myproxy.php`as the landing page the metadata import script should be named `myproxy.mdmgmt.php` and be placed in the metadata directory. `myproxy.mdmgmt.php` should produce two metadata files: `myproxy.optimized.metadata.php` and `myproxy.public.metadata.php`.
+Corto uses a simple naming convention for mapping a corto instance to the its metadata: if you use `myproxy.php`as the landing page the metadata import script should be named `myproxy.mdmgmt.php` and be placed in the metadata directory. `myproxy.mdmgmt.php` should produce two metadata files: `myproxy.optimized.metadata.php` and `myproxy.public.metadata.php`.
  
 ===Configuration of Corto in a non-demo mode is done in two steps:===
 
