@@ -18,7 +18,6 @@ cd /var/www
 svn checkout http://corto.googlecode.com/svn/trunk/ corto
 }}}
   #Create a virtual host that maps `http://example.com/corto` to `/var/www/corto/public`
-  # Test that the setup is working by going to `http://example.com/corto`
   # Creating the 'landing page' by coping that index.php to myproxy.php
 {{{
 cp /var/www/corto/public/index.php /var/www/corto/public/myproxy.php
@@ -28,23 +27,29 @@ cp /var/www/corto/public/index.php /var/www/corto/public/myproxy.php
 // Comment out
 //include ('../configs/corto.mdmgmt.php');
 // Change to match metadata location
-$server->setMetadata('/var/www/corto/configs/myproxy_optimized_metadata.php');
+$server->setMetadata('/var/www/corto/metadata/myproxy.optimized.metadata.php');
 }}}
-   Note: var/www/corto/configs/myproxy_optimized_metadata.php must be matched
+   Note: var/www/corto/configs/myproxy.optimized.metadata.php must be matched
   # Configure a metadata import script
 {{{
-cp /var/www/corto/configs/corto.mdmgmt.php /var/www/corto/configs/myproxy.mdmgmt.php
+cp /var/www/corto/metadata/corto.mdmgmt.php /var/www/corto/metadata/myproxy.mdmgmt.php
 }}}
-  # Create metadata (We assume that we haev metadata for both an SP and an IdP in SAML 2.0 XML format)
-   Edit `/var/www/corto/configs/myproxy.mdmgmt.php`
-   The `$metadatasources` contains pointers to all metadata used by Corto. There are two different handlers `php` and `xml`. 
-    * `php` points to a file on the disc
+  # Test that the setup is working by going to `http://example.com/corto`  # Create metadata (We assume that we have metadata for both an SP and an IdP in SAML 2.0 XML format)
+   Edit `/var/www/corto/metadata/myproxy.mdmgmt.php`
+   The `$metadatasources` contains pointers to all metadata used by Corto. 
+Metadata can be imported as `private`, `public` or `remote:
+ *`private` is for non-public metadata eg. encryption keys for hosted entities
+ *`public` is for public metadata for hosted entities. 'public' metadata will be served at the entity's well known address ie. the entityID.
+ *`remote` is for remote entities
+
+There are two different handlers `php` and `xml` for metadata in different formats.
+    * `php` points to a file on the disc in corto php format (ie. xml as php)
     * `xml` points to an xml file either on disk or on a remote location. All protocols recognized by php can be used.
 {{{
 $metadatasources = array(
-    'xml:' . dirname(__FILE__) . '/../configs/mysp.meta.xml',
-    'xml:' . dirname(__FILE__) . '/../configs/myidp.meta.xml',
-    'php:' . dirname(__FILE__) . '/../configs/corto.meta.php',
+    'remote:xml:' . dirname(__FILE__) . '/../configs/mysp.meta.xml',
+    'remote:xml:' . dirname(__FILE__) . '/../configs/myidp.meta.xml',
+    'public:php:' . dirname(__FILE__) . '/../configs/corto.meta.php',
 );
 }}}
    All metadata sources are merged into on metadata document, ie. merging duplicate entities. Allowing public and private metadata to be merged for internal use in Corto. You can parse in metadata that contains commen metadata used for all entitites by using `_COMMON_` as the entityID.
