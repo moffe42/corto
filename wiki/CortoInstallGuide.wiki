@@ -19,7 +19,7 @@ svn checkout http://corto.googlecode.com/svn/trunk/ corto
 }}}
   # Create a virtual host that maps `http://example.com/corto` to `/var/www/corto/public`
   # Test that the setup is working by going to `http://example.com/corto`
-  # Create the 'landing page' by coping that index.php to myproxy.php
+  # Create the 'landing page' by copying that index.php to myproxy.php
 {{{
 cp /var/www/corto/public/index.php /var/www/corto/public/myproxy.php
 }}}
