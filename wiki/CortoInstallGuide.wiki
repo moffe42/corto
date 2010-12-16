@@ -42,20 +42,16 @@ There are two different handlers `php` and `xml` for metadata in different forma
     * `xml` points to an xml file either on disk or on a remote location. All protocols recognized by php can be used.
 {{{
 $metadatasources = array(
-    'remote:xml:' . dirname(__FILE__) . '/../configs/mysp.meta.xml',
-    'remote:xml:' . dirname(__FILE__) . '/../configs/myidp.meta.xml',
-    'public:php:' . dirname(__FILE__) . '/../configs/corto.meta.php',
+    'public:php:' . dirname(__FILE__) . '/../metadata/corto.meta.php',
+    'remote:xml:' . dirname(__FILE__) . '/../metadata/mysp.meta.xml',
+    'remote:xml:' . dirname(__FILE__) . '/../metadata/myidp.meta.xml',
 );
 }}}
    All metadata sources are merged into one metadata document, ie. merging duplicate entities. Allowing public and private metadata to be merged for internal use in Corto. You can parse in metadata that contains commen metadata used for all entitites by using `_COMMON_` as the entityID.
    The metadata `corto.meta.php` is Cortos own internal metadata.
-  # Configure where to put the optimized Corto metadata.
-{{{
-$metadatafile = '/var/www/corto/configs/myproxy_optimized_metadata.php';
-}}}
   # Run the `myproxy.mdmgmt.php` script
 {{{
-php /var/www/corto/configs/myproxy.mdmgmt.php
+php /var/www/corto/metadata/myproxy.mdmgmt.php
 }}}
    Now Corto has produced metadata fit for Corto consumtion.
   # Metadata for Corto can be located at
