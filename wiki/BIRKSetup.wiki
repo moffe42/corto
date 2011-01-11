@@ -1,0 +1,22 @@
+#summary Documentation of the WAYF BIRK setup
+
+= Corto setup = 
+
+We assume that Corto is installed in `/var/www/`
+
+  # Checkout Corto from SVN.
+{{{
+svn checkout http://corto.googlecode.com/svn/trunk/ /var/www/corto
+}}}
+  # Run birk.mdmgmt.php
+{{{
+php /var/www/corto/metadata/birk.mdmgmt.php
+}}} 
+
+= Matadata = 
+
+JANUS is used to supply metadata to BIRK
+
+
+
+= Other =
