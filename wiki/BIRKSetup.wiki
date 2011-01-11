@@ -8,6 +8,10 @@ We assume that Corto is installed in `/var/www/`
 {{{
 svn checkout http://corto.googlecode.com/svn/trunk/ /var/www/corto
 }}}
+  # Create a `privatekeys`folder
+{{{
+mkdir /var/www/corto/privatekeys
+}}}
   # Run birk.mdmgmt.php
 {{{
 php /var/www/corto/metadata/birk.mdmgmt.php
