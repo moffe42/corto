@@ -2,9 +2,8 @@
 
 = Corto setup = 
 
-We assume that Corto is installed in `/var/www/`
-
-  # Checkout Corto from SVN.
+  # Setup Apache (VHOST, SSL etc.)
+  # Checkout Corto from SVN. We assume that Corto is installed in `/var/www/`
 {{{
 svn checkout http://corto.googlecode.com/svn/trunk/ /var/www/corto
 }}}
@@ -12,6 +11,10 @@ svn checkout http://corto.googlecode.com/svn/trunk/ /var/www/corto
 {{{
 mkdir /var/www/corto/privatekeys
 }}}
+  # Copy private key til `privatekeys` folder
+  # Check that all metadata to be used by BIRK is present i JANUS (SP, Proxy-SP, IdP)
+    * Remember to create a state called BIRK and move SP's to this state
+  # Check that all exportes are included in JANUS
   # Run birk.mdmgmt.php
 {{{
 php /var/www/corto/metadata/birk.mdmgmt.php
